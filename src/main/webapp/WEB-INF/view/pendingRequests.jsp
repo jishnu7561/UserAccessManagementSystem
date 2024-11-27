@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -76,6 +78,25 @@
 <body>
 	<div class="container">
         <h2>Pending Requests</h2>
+        
+		<% 
+        	String role = (String) session.getAttribute("role"); 
+        	if (role == null) { 
+    	%>
+        	<script type="text/javascript">
+            	window.location.href = "<%= request.getContextPath() %>/login";
+        	</script>
+    	<% 
+        	} else if (role.equals("Employee") ) { 
+    	%>
+        	<script type="text/javascript">
+            	window.location.href = "<%= request.getContextPath() %>/login";
+        	</script>
+    	<% 
+        	} 
+    	%>
+    	
+        
         <% 
             String success = request.getParameter("success");
         	String failed = request.getParameter("failed");

@@ -61,6 +61,7 @@ public class UserDao {
                         isValidUser.setUsername(rs.getString("username"));
                         isValidUser.setPassword(rs.getString("password"));
                         isValidUser.setRole(rs.getString("role"));
+                        isValidUser.setId(rs.getInt("id"));
                     }
                 }
             }

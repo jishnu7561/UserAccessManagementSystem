@@ -59,8 +59,9 @@ public class RequestServlet extends HttpServlet {
 		 String accessType = request.getParameter("accessType"); 
 		 String reason = request.getParameter("reason");
 		 
-		 int userId = (int) request.getSession().getAttribute("userId"); // Assuming userId is stored in session
-		 Requests requests = new Requests(userId,Integer.parseInt(softwareId),accessType,reason, RequestStatus.PENDING);
+		 int userId = (int) request.getSession().getAttribute("userId"); 
+		 System.out.println(userId);
+		 Requests requests = new Requests(userId,Integer.parseInt(softwareId),accessType,reason, RequestStatus.Pending);
 		 
 	     try {
 			int requested = requestDao.addRequest(requests);

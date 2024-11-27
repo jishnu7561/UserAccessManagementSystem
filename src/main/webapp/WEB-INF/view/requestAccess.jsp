@@ -1,4 +1,5 @@
 <%@page import="java.util.List"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -82,6 +83,23 @@
 <body>
 	<div class="container">
         <h2>Request Access</h2>
+        
+        <% 
+        	String role = (String) session.getAttribute("role"); 
+        	if (role == null) { 
+    	%>
+        	<script type="text/javascript">
+            	window.location.href = "<%= request.getContextPath() %>/login";
+        	</script>
+    	<% 
+        	} else if (role.equals("Manager") ) { 
+    	%>
+        	<script type="text/javascript">
+            	window.location.href = "<%= request.getContextPath() %>/login";
+        	</script>
+    	<% 
+        	} 
+    	%>
 
         <form action="<%= request.getContextPath() %>/request-access" method="post">
             <!-- Software Name Dropdown -->
